@@ -47,3 +47,25 @@ Base no es solo otra L2, es una apuesta por la usabilidad.
 - Ejecución transparente
 
 Queremos que el guild sea un ejemplo de organización eficiente dentro del ecosistema Base.
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract SimpleStorage {
+    uint256 private storedValue;
+    address public owner;
+
+    event ValueChanged(uint256 newValue, address indexed changedBy);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function set(uint256 value) external {
+        storedValue = value;
+        emit ValueChanged(value, msg.sender);
+    }
+
+    function get() external view returns (uint256) {
+        return storedValue;
+    }
+}
