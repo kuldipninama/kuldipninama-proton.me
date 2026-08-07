@@ -88,3 +88,20 @@ contract HelloBase {
         return greeting;
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract NameRegistry {
+    mapping(address => string) public names;
+
+    event NameSet(address indexed user, string name);
+
+    function setName(string calldata name) external {
+        names[msg.sender] = name;
+        emit NameSet(msg.sender, name);
+    }
+
+    function getName(address user) external view returns (string memory) {
+        return names[user];
+    }
+}
