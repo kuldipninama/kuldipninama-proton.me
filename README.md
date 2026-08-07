@@ -9,3 +9,11 @@ Características principales:
 - Compatible con todas las herramientas de EVM (Hardhat, Foundry, Remix, etc.)
 
 Base no tiene su propio token nativo de gas (usa ETH) y está enfocada en ser el hogar de la próxima generación de aplicaciones on-chain.
+# Primeros pasos en Base
+
+1. Añade la red Base a tu wallet (Chain ID: 8453)
+2. Consigue ETH en Base (bridge oficial o exchanges)
+3. Usa Hardhat o Foundry para desplegar
+4. Explora el explorador: https://basescan.org
+
+Documentación oficial: https://docs.base.org
