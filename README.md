@@ -23,3 +23,9 @@ Documentación oficial: https://docs.base.org
 Repositorio para coordinar eventos, talleres, spaces y meetups del Guild de Base.
 
 Base no es solo tecnología: es una comunidad de builders. Aquí organizamos todo lo relacionado con actividades presenciales y online.
+
+# Base Guild Governance
+
+Espacio de gobernanza y toma de decisiones del Guild de Base.
+
+Base representa una visión de Web3 más accesible y orientada a la adopción masiva. Este repositorio sirve para coordinar cómo el guild participa y contribuye a ese ecosistema de forma organizada.
