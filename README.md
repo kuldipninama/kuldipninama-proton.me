@@ -39,3 +39,11 @@ Base representa una visión de Web3 más accesible y orientada a la adopción ma
 5. Alineación con la misión de Base: llevar blockchain a la siguiente generación de usuarios
 
 Base no es solo otra L2, es una apuesta por la usabilidad.
+# Cómo tomamos decisiones
+
+- Propuestas abiertas
+- Discusión en comunidad
+- Votación cuando sea necesario
+- Ejecución transparente
+
+Queremos que el guild sea un ejemplo de organización eficiente dentro del ecosistema Base.
