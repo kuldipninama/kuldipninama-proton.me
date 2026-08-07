@@ -29,3 +29,13 @@ Base no es solo tecnología: es una comunidad de builders. Aquí organizamos tod
 Espacio de gobernanza y toma de decisiones del Guild de Base.
 
 Base representa una visión de Web3 más accesible y orientada a la adopción masiva. Este repositorio sirve para coordinar cómo el guild participa y contribuye a ese ecosistema de forma organizada.
+
+# Principios del Guild en Base
+
+1. Transparencia en las decisiones
+2. Foco en utilidad real y adopción
+3. Colaboración open-source
+4. Apoyo a builders nuevos y experimentados
+5. Alineación con la misión de Base: llevar blockchain a la siguiente generación de usuarios
+
+Base no es solo otra L2, es una apuesta por la usabilidad.
