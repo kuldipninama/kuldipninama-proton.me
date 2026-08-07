@@ -17,3 +17,9 @@ Base no tiene su propio token nativo de gas (usa ETH) y está enfocada en ser el
 4. Explora el explorador: https://basescan.org
 
 Documentación oficial: https://docs.base.org
+
+# Base Guild Events
+
+Repositorio para coordinar eventos, talleres, spaces y meetups del Guild de Base.
+
+Base no es solo tecnología: es una comunidad de builders. Aquí organizamos todo lo relacionado con actividades presenciales y online.
