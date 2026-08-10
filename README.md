@@ -1294,3 +1294,32 @@ contract ETHPool {
         emit Withdrawn(owner, amount);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract ETHReceiver {
+    address public owner;
+    uint256 public totalReceived;
+
+    event Received(address indexed from, uint256 amount);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    receive() external payable {
+        totalReceived += msg.value;
+        emit Received(msg.sender, msg.value);
+    }
+
+    function withdrawAll() external {
+        require(msg.sender == owner, "Not owner");
+        uint256 amount = address(this).balance;
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
