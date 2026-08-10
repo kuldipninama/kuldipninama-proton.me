@@ -1044,3 +1044,43 @@ contract DonationPool {
         emit Withdrawn(amount);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract SimpleCrowdfund {
+    address public creator;
+    uint256 public goal;
+    uint256 public raised;
+    bool public completed;
+
+    mapping(address => uint256) public contributions;
+
+    event Contributed(address indexed user, uint256 amount);
+    event GoalReached(uint256 total);
+
+    constructor(uint256 _goal) {
+        creator = msg.sender;
+        goal = _goal;
+    }
+
+    function contribute() external payable {
+        require(!completed, "Already completed");
+        require(msg.value > 0, "Must send ETH");
+        contributions[msg.sender] += msg.value;
+        raised += msg.value;
+        emit Contributed(msg.sender, msg.value);
+
+        if (raised >= goal) {
+            completed = true;
+            emit GoalReached(raised);
+        }
+    }
+
+    function withdraw() external {
+        require(msg.sender == creator, "Not creator");
+        require(completed, "Goal not reached");
+        uint256 amount = address(this).balance;
+        (bool success, ) = creator.call{value: amount}("");
+        require(success, "Transfer failed");
+    }
+}
