@@ -1084,3 +1084,34 @@ contract SimpleCrowdfund {
         require(success, "Transfer failed");
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract TreasuryLite {
+    address public owner;
+    uint256 public totalReceived;
+
+    event Received(address indexed from, uint256 amount);
+    event Spent(address indexed to, uint256 amount);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    receive() external payable {
+        totalReceived += msg.value;
+        emit Received(msg.sender, msg.value);
+    }
+
+    function spend(address to, uint256 amount) external {
+        require(msg.sender == owner, "Not owner");
+        require(address(this).balance >= amount, "Insufficient funds");
+        (bool success, ) = to.call{value: amount}("");
+        require(success, "Transfer failed");
+        emit Spent(to, amount);
+    }
+
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
