@@ -1375,3 +1375,32 @@ contract CoinJar {
         emit Emptied(amount);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Pot {
+    address public owner;
+    uint256 public potAmount;
+
+    event Added(address indexed from, uint256 amount);
+    event Claimed(address indexed to, uint256 amount);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function add() external payable {
+        require(msg.value > 0, "Must send ETH");
+        potAmount += msg.value;
+        emit Added(msg.sender, msg.value);
+    }
+
+    function claim() external {
+        require(msg.sender == owner, "Not owner");
+        uint256 amount = potAmount;
+        potAmount = 0;
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed");
+        emit Claimed(owner, amount);
+    }
+}
