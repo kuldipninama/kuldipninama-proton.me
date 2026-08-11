@@ -1517,3 +1517,34 @@ contract Pocket {
         emit Taken(amount);
     }
 }
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Allow {
+    address public owner;
+    mapping(address => bool) public allowed;
+
+    event Allowed(address indexed user);
+    event Disallowed(address indexed user);
+
+    constructor() {
+        owner = msg.sender;
+        allowed[msg.sender] = true;
+    }
+
+    function allow(address user) external {
+        require(msg.sender == owner, "Not owner");
+        allowed[user] = true;
+        emit Allowed(user);
+    }
+
+    function disallow(address user) external {
+        require(msg.sender == owner, "Not owner");
+        allowed[user] = false;
+        emit Disallowed(user);
+    }
+
+    function isAllowed(address user) external view returns (bool) {
+        return allowed[user];
+    }
+}
