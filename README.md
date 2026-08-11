@@ -1489,4 +1489,31 @@ contract VaultLite {
         require(success, "Transfer failed");
         emit Withdrawn(msg.sender, amount);
     }
+}// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+contract Pocket {
+    address public owner;
+    uint256 public total;
+
+    event Received(address indexed from, uint256 amount);
+    event Taken(uint256 amount);
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    receive() external payable {
+        total += msg.value;
+        emit Received(msg.sender, msg.value);
+    }
+
+    function take() external {
+        require(msg.sender == owner, "Not owner");
+        uint256 amount = address(this).balance;
+        total = 0;
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed");
+        emit Taken(amount);
+    }
 }
